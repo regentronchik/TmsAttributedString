@@ -17,55 +17,65 @@ class ViewController: UIViewController {
         
         let lightBlue = UIColor(red: 66/255, green: 230/255, blue: 245/255, alpha: 1)
 
+        let colors: [UIColor] = [.red, .orange, .yellow, .green, lightBlue, .blue, .purple ]
         
         let attrStr = NSMutableAttributedString(string: textView.text)
         
-        attrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: 6))
+        let colorNames = textView.text.components(separatedBy: " ")
         
-        if let location = textView.text.firstRange(of: "охотник") {
-            let lowerBound = location.lowerBound.encodedOffset
-            let length = location.upperBound.encodedOffset - lowerBound
-            attrStr.addAttribute(.foregroundColor,
-                                    value: UIColor.orange,
-                                    range: NSRange(location: lowerBound, length: length))
-        }
-        if let location = textView.text.firstRange(of: "желает") {
-            let lowerBound = location.lowerBound.encodedOffset
-            let length = location.upperBound.encodedOffset - lowerBound
-            attrStr.addAttribute(.foregroundColor,
-                                    value: UIColor.yellow,
-                                    range: NSRange(location: lowerBound, length: length))
-        }
-        if let location = textView.text.firstRange(of: "знать") {
-            let lowerBound = location.lowerBound.encodedOffset
-            let length = location.upperBound.encodedOffset - lowerBound
-            attrStr.addAttribute(.foregroundColor,
-                                    value: UIColor.green,
-                                    range: NSRange(location: lowerBound, length: length))
-        }
-        if let location = textView.text.firstRange(of: "где") {
-            let lowerBound = location.lowerBound.encodedOffset
-            let length = location.upperBound.encodedOffset - lowerBound
-            attrStr.addAttribute(.foregroundColor,
-                                    value: lightBlue,
-                                    range: NSRange(location: lowerBound, length: length))
-        }
-        if let location = textView.text.firstRange(of: "сидит") {
-            let lowerBound = location.lowerBound.encodedOffset
-            let length = location.upperBound.encodedOffset - lowerBound
-            attrStr.addAttribute(.foregroundColor,
-                                    value: UIColor.blue,
-                                    range: NSRange(location: lowerBound, length: length))
-        }
-        if let location = textView.text.firstRange(of: "фазан") {
-            let lowerBound = location.lowerBound.encodedOffset
-            let length = location.upperBound.encodedOffset - lowerBound
-            attrStr.addAttribute(.foregroundColor,
-                                    value: UIColor.purple,
-                                    range: NSRange(location: lowerBound, length: length))
+        for (index, word) in colorNames.enumerated() {
+            let color = colors[index]
+            let range = (textView.text as NSString).range(of: word)
+            attrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
         }
         textView.attributedText = attrStr
         
+        
+        
+//        attrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: 6))
+//        if let location = textView.text.firstRange(of: "охотник") {
+//            let lowerBound = location.lowerBound.encodedOffset
+//            let length = location.upperBound.encodedOffset - lowerBound
+//            attrStr.addAttribute(.foregroundColor,
+//                                    value: UIColor.orange,
+//                                    range: NSRange(location: lowerBound, length: length))
+//        }
+//        if let location = textView.text.firstRange(of: "желает") {
+//            let lowerBound = location.lowerBound.encodedOffset
+//            let length = location.upperBound.encodedOffset - lowerBound
+//            attrStr.addAttribute(.foregroundColor,
+//                                    value: UIColor.yellow,
+//                                    range: NSRange(location: lowerBound, length: length))
+//        }
+//        if let location = textView.text.firstRange(of: "знать") {
+//            let lowerBound = location.lowerBound.encodedOffset
+//            let length = location.upperBound.encodedOffset - lowerBound
+//            attrStr.addAttribute(.foregroundColor,
+//                                    value: UIColor.green,
+//                                    range: NSRange(location: lowerBound, length: length))
+//        }
+//        if let location = textView.text.firstRange(of: "где") {
+//            let lowerBound = location.lowerBound.encodedOffset
+//            let length = location.upperBound.encodedOffset - lowerBound
+//            attrStr.addAttribute(.foregroundColor,
+//                                    value: lightBlue,
+//                                    range: NSRange(location: lowerBound, length: length))
+//        }
+//        if let location = textView.text.firstRange(of: "сидит") {
+//            let lowerBound = location.lowerBound.encodedOffset
+//            let length = location.upperBound.encodedOffset - lowerBound
+//            attrStr.addAttribute(.foregroundColor,
+//                                    value: UIColor.blue,
+//                                    range: NSRange(location: lowerBound, length: length))
+//        }
+//        if let location = textView.text.firstRange(of: "фазан") {
+//            let lowerBound = location.lowerBound.encodedOffset
+//            let length = location.upperBound.encodedOffset - lowerBound
+//            attrStr.addAttribute(.foregroundColor,
+//                                    value: UIColor.purple,
+//                                    range: NSRange(location: lowerBound, length: length))
+//        }
+
     }
 
 
